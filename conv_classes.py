@@ -140,3 +140,46 @@ class MLPDropout(object):
 
         # Grab all the parameters together.
         self.params = [ param for layer in self.dropout_layers for param in layer.params ]
+
+    def predict(self, new_data):
+        next_layer_input = new_data
+        for i, layer in enumerate(self.layers):
+            if i < len(self.layers) - 1:
+                next_layer_input = self.activations[i](T.dot(next_layer_input, layer.W) + layer.b)
+            else:
+                p_y_given_x = T.nnet.softmax(T.dot(next_layer_input, layer.W) + layer.b)
+        y_pred = T.argmax(p_y_given_x, axis=1)
+        return y_pred
+
+    def predict_p(self, new_data):
+        next_layer_input = new_data
+        for i, layer in enumerate(self.layers):
+            if i < len(self.layers) - 1:
+                next_layer_input = self.activations[i](T.dot(next_layer_input, layer.W) + layer.b)
+            else:
+                p_y_given_x = T.nnet.softmax(T.dot(next_layer_input, layer.W) + layer.b)
+        return p_y_given_x
+
+class MLP(object):
+    """Multi-Layer Perceptron Class
+
+    """
+
+    def __init__(self, rng, input, n_in, n_hidden, n_out):
+
+        self.hiddenLayer = HiddenLayer(rng=rng, input=input,
+                                       n_in=n_in, n_out=n_hidden,
+                                       activation=T.tanh)
+
+        # The logistic regression layer gets as input the hidden units
+        # of the hidden layer
+        self.logRegressionLayer = LogisticRegression(
+            input=self.hiddenLayer.output,
+            n_in=n_hidden,
+            n_out=n_out)
+
+
+        self.negative_log_likelihood = self.logRegressionLayer.negative_log_likelihood
+        self.errors = self.logRegressionLayer.errors
+
+        self.params = self.hiddenLayer.params + self.logRegressionLayer.params
