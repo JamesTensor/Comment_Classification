@@ -71,3 +71,15 @@ def train_conv_net(datasets,
         layer1_input = conv_layer.output.flatten(2)
         conv_layers.append(conv_layer)
         layer1_inputs.append(layer1_input)
+    layer1_input = T.concatenate(layer1_inputs, 1)
+    hidden_units[0] = feature_maps * len(filter_hs)
+    classifier = MLPDropout(rng, input=layer1_input, layer_sizes=hidden_units, activations=activations,
+                            dropout_rates=dropout_rate)
+    params = classifier.params
+    for conv_layer in conv_layers:
+        params += conv_layer.params
+    if non_static:
+        params += [Words]
+    cost = classifier.negative_log_likelihood(y)
+    dropout_cost = classifier.dropout_negative_log_likelihood(y)
+    grad_updates = sgd_updates_adadelta(params, dropout_cost, lr_decay, 1e-6, sqr_norm_lim)
