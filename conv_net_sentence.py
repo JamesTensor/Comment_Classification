@@ -52,3 +52,22 @@ def train_conv_net(datasets,
                   ("learn_decay", lr_decay), ("conv_non_linear", conv_non_linear), ("non_static", non_static)
         , ("sqr_norm_lim", sqr_norm_lim), ("shuffle_batch", shuffle_batch)]
     print (parameters)
+
+    index = T.lscalar()
+    x = T.matrix('x')
+    y = T.ivector('y')
+    Words = theano.shared(value=U, name="Words")
+    zero_vec_tensor = T.vector()
+    zero_vec = np.zeros(img_w)
+    set_zero = theano.function([zero_vec_tensor], updates=[(Words, T.set_subtensor(Words[0, :], zero_vec_tensor))])
+    layer0_input = Words[T.cast(x.flatten(), dtype="int32")].reshape((x.shape[0], 1, x.shape[1], Words.shape[1]))
+    conv_layers = []
+    layer1_inputs = []
+    for i in xrange(len(filter_hs)):
+        filter_shape = filter_shapes[i]
+        pool_size = pool_sizes[i]
+        conv_layer = LeNetConvPoolLayer(rng, input=layer0_input, image_shape=(batch_size, 1, img_h, img_w),
+                                        filter_shape=filter_shape, poolsize=pool_size, non_linear=conv_non_linear)
+        layer1_input = conv_layer.output.flatten(2)
+        conv_layers.append(conv_layer)
+        layer1_inputs.append(layer1_input)
