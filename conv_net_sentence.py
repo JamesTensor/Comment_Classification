@@ -115,6 +115,7 @@ def train_conv_net(datasets,
             train_set = new_data[:n_train_batches * batch_size, :]
             val_set = new_data[n_train_batches * batch_size:, :]
             train_set_x, train_set_y = shared_dataset((train_set[:, :img_h], train_set[:, -1]))
+
             val_set_x, val_set_y = shared_dataset((val_set[:, :img_h], val_set[:, -1]))
             n_val_batches = n_batches - n_train_batches
             val_model = theano.function([index], classifier.errors(y),
@@ -123,4 +124,22 @@ def train_conv_net(datasets,
                                             y: val_set_y[index * batch_size: (index + 1) * batch_size]})
         else:
             train_set = new_data[:, :]
-            train_set_x, train_set_y = shared_dataset((train_set[:, :img_h], train_set[:, -1]))  
+            train_set_x, train_set_y = shared_dataset((train_set[:, :img_h], train_set[:, -1]))
+        test_model = theano.function([index], classifier.errors(y),
+                                     givens={
+                                         x: train_set_x[index * batch_size: (index + 1) * batch_size],
+                                         y: train_set_y[index * batch_size: (index + 1) * batch_size]})
+        train_model = theano.function([index], cost, updates=grad_updates,
+                                      givens={
+                                          x: train_set_x[index * batch_size:(index + 1) * batch_size],
+                                          y: train_set_y[index * batch_size:(index + 1) * batch_size]})
+        test_pred_layers = []
+        test_size = test_set_x.shape[0]
+        test_layer0_input = Words[T.cast(x.flatten(), dtype="int32")].reshape((test_size, 1, img_h, Words.shape[1]))
+        for conv_layer in conv_layers:
+            test_layer0_output = conv_layer.predict(test_layer0_input, test_size)
+            test_pred_layers.append(test_layer0_output.flatten(2))
+        test_layer1_input = T.concatenate(test_pred_layers, 1)
+        test_y_pred = classifier.predict(test_layer1_input)
+        test_error = T.mean(T.neq(test_y_pred, y))
+        test_model_all = theano.function([x, y], test_error)
