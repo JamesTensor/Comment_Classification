@@ -15,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/conv_net_sentence.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="430">
-              <caret line="77" selection-start-line="77" selection-end-line="77" />
+            <state relative-caret-position="594">
+              <caret line="125" column="97" selection-start-line="125" selection-start-column="97" selection-end-line="125" selection-end-column="97" />
               <folding>
                 <element signature="e#22#36#0" expanded="true" />
               </folding>
@@ -27,7 +27,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/conv_classes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6622">
+            <state relative-caret-position="6490">
               <caret line="301" column="66" selection-start-line="301" selection-end-line="302" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
@@ -72,6 +72,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -83,7 +84,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -119,17 +119,18 @@
       <workItem from="1565051573152" duration="166000" />
       <workItem from="1565313249623" duration="137000" />
       <workItem from="1565315055261" duration="235000" />
+      <workItem from="1565506718694" duration="95000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="538000" />
+    <option name="totallyTimeSpent" value="633000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="23" width="1231" height="777" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18250631" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18502943" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -160,8 +161,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/conv_net_sentence.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="77" selection-start-line="77" selection-end-line="77" />
+        <state relative-caret-position="594">
+          <caret line="125" column="97" selection-start-line="125" selection-start-column="97" selection-end-line="125" selection-end-column="97" />
           <folding>
             <element signature="e#22#36#0" expanded="true" />
           </folding>
@@ -170,7 +171,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/conv_classes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6622">
+        <state relative-caret-position="6490">
           <caret line="301" column="66" selection-start-line="301" selection-end-line="302" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
