@@ -260,19 +260,18 @@ def train_conv_net(datasets,
         return [train, test]
 
     if __name__ == "__main__":
-
+        print("loading data...")
         x = cPickle.load(open("mr.p", "rb"))
         revs, W, W2, word_idx_map, vocab = x[0], x[1], x[2], x[3], x[4]
-
+        print("data loaded!")
         mode = sys.argv[1]
         word_vectors = sys.argv[2]
         if mode == "-nonstatic":
-            print("model architecture: CNN-non-static"
+            print("model architecture: CNN-non-static")
             non_static = True
         elif mode == "-static":
             print("model architecture: CNN-static")
             non_static = False
-        execfile("conv_net_classes.py")
         if word_vectors == "-rand":
             print("using: random vectors")
             U = W2
