@@ -27,4 +27,20 @@ def build_data_cv(data_folder, cv=10, clean_string=True):
                       "num_words": len(orig_rev.split()),
                       "split": np.random.randint(0,cv)}
             revs.append(datum)
-    
+    with open(neg_file, "rb") as f:
+        for line in f:
+            rev = []
+            rev.append(line.strip())
+            if clean_string:
+                orig_rev = clean_str(" ".join(rev))
+            else:
+                orig_rev = " ".join(rev).lower()
+            words = set(orig_rev.split())
+            for word in words:
+                vocab[word] += 1
+            datum = {"y": 0,
+                     "text": orig_rev,
+                     "num_words": len(orig_rev.split()),
+                     "split": np.random.randint(0, cv)}
+            revs.append(datum)
+    return revs, vocab

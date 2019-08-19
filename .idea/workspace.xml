@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4c1f7c8-b274-4c7f-8ccb-66ba42fbb050" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/process_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/process_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/process_data.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,7 +15,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/conv_net_sentence.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6578">
+            <state relative-caret-position="6424">
               <caret line="299" column="29" selection-start-line="299" selection-start-column="29" selection-end-line="299" selection-end-column="29" />
               <folding>
                 <element signature="e#22#36#0" expanded="true" />
@@ -28,8 +27,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/process_data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
+            <state relative-caret-position="594">
+              <caret line="45" column="22" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -37,7 +36,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/conv_classes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6622">
+            <state relative-caret-position="6490">
               <caret line="301" column="66" selection-start-line="301" selection-end-line="302" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
@@ -139,17 +138,18 @@
       <workItem from="1565919673684" duration="66000" />
       <workItem from="1566205752216" duration="218000" />
       <workItem from="1566205980263" duration="6000" />
+      <workItem from="1566206039360" duration="15000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1412000" />
+    <option name="totallyTimeSpent" value="1427000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="23" width="1231" height="777" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20941968" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21278386" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -180,7 +180,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/conv_net_sentence.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6578">
+        <state relative-caret-position="6424">
           <caret line="299" column="29" selection-start-line="299" selection-start-column="29" selection-end-line="299" selection-end-column="29" />
           <folding>
             <element signature="e#22#36#0" expanded="true" />
@@ -190,7 +190,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/conv_classes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6622">
+        <state relative-caret-position="6490">
           <caret line="301" column="66" selection-start-line="301" selection-end-line="302" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
@@ -200,8 +200,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/process_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
+        <state relative-caret-position="594">
+          <caret line="45" column="22" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
         </state>
       </provider>
     </entry>
