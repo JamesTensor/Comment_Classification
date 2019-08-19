@@ -44,3 +44,16 @@ def build_data_cv(data_folder, cv=10, clean_string=True):
                      "split": np.random.randint(0, cv)}
             revs.append(datum)
     return revs, vocab
+
+    def get_W(word_vecs, k=300):
+
+        vocab_size = len(word_vecs)
+        word_idx_map = dict()
+        W = np.zeros(shape=(vocab_size + 1, k))
+        W[0] = np.zeros(k)
+        i = 1
+        for word in word_vecs:
+            W[i] = word_vecs[word]
+            word_idx_map[word] = i
+            i += 1
+        return W, word_idx_map
