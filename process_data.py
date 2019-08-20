@@ -79,3 +79,26 @@ def build_data_cv(data_folder, cv=10, clean_string=True):
                 else:
                     f.read(binary_len)
         return word_vecs
+
+    def add_unknown_words(word_vecs, vocab, min_df=1, k=300):
+
+        for word in vocab:
+            if word not in word_vecs and vocab[word] >= min_df:
+                word_vecs[word] = np.random.uniform(-0.25, 0.25, k)
+
+    def clean_str(string, TREC=False):
+        
+        string = re.sub(r"[^A-Za-z0-9(),!?\'\`]", " ", string)
+        string = re.sub(r"\'s", " \'s", string)
+        string = re.sub(r"\'ve", " \'ve", string)
+        string = re.sub(r"n\'t", " n\'t", string)
+        string = re.sub(r"\'re", " \'re", string)
+        string = re.sub(r"\'d", " \'d", string)
+        string = re.sub(r"\'ll", " \'ll", string)
+        string = re.sub(r",", " , ", string)
+        string = re.sub(r"!", " ! ", string)
+        string = re.sub(r"\(", " \( ", string)
+        string = re.sub(r"\)", " \) ", string)
+        string = re.sub(r"\?", " \? ", string)
+        string = re.sub(r"\s{2,}", " ", string)
+        return string.strip() if TREC else string.strip().lower()
