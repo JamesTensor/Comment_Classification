@@ -102,3 +102,31 @@ def build_data_cv(data_folder, cv=10, clean_string=True):
         string = re.sub(r"\?", " \? ", string)
         string = re.sub(r"\s{2,}", " ", string)
         return string.strip() if TREC else string.strip().lower()
+
+    def clean_str_sst(string):
+
+        string = re.sub(r"[^A-Za-z0-9(),!?\'\`]", " ", string)
+        string = re.sub(r"\s{2,}", " ", string)
+        return string.strip().lower()
+
+    if __name__ == "__main__":
+        w2v_file = sys.argv[1]
+        data_folder = ["rt-polarity.pos", "rt-polarity.neg"]
+        print("loading data..."),
+        revs, vocab = build_data_cv(data_folder, cv=10, clean_string=True)
+        max_l = np.max(pd.DataFrame(revs)["num_words"])
+        print("data loaded!")
+        print("number of sentences: " + str(len(revs)))
+        print("vocab size: " + str(len(vocab)))
+        print("max sentence length: " + str(max_l))
+        print("loading word2vec vectors...")
+        w2v = load_bin_vec(w2v_file, vocab)
+        print("word2vec loaded!")
+        print("num words already in word2vec: " + str(len(w2v)))
+        add_unknown_words(w2v, vocab)
+        W, word_idx_map = get_W(w2v)
+        rand_vecs = {}
+        add_unknown_words(rand_vecs, vocab)
+        W2, _ = get_W(rand_vecs)
+        cPickle.dump([revs, W, W2, word_idx_map, vocab], open("mr.p", "wb"))
+        print("dataset created!")
